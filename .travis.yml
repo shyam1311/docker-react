@@ -1,0 +1,13 @@
+# Whether we need sudo access
+sudo: required
+# What services must already be available
+services:
+  - docker
+
+# Series of steps that needs to occur before an action ( here, tests )
+before_install:
+  - docker build -t vns1311/docker-react -f Dockerfile.dev .
+
+# Perform the action ( Set of commands to run the tests )
+script:
+  - docker run -e CI=true vns1311/docker-react npm run test -- --coverage
