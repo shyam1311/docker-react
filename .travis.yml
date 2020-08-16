@@ -11,3 +11,11 @@ before_install:
 # Perform the action ( Set of commands to run the tests )
 script:
   - docker run -e CI=true vns1311/docker-react npm run test -- --coverage
+
+deploy:
+  provider: heroku
+  api_key: "$heroku_api_key"
+  skip_cleanup: true
+  app: vns-docker-react
+  on:
+    branch: master  
