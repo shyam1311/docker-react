@@ -18,5 +18,6 @@ RUN npm run build
 # Select base image
 FROM nginx
 
+EXPOSE 80
 # Copy results from builder phase to the nginx setup
 COPY --from=builder /app/build /usr/share/nginx/html
